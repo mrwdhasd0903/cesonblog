@@ -114,6 +114,8 @@ CREATE TABLE `t_contact` (
 
 /*Data for the table `t_contact` */
 
+insert  into `t_contact`(`id`,`email`,`pay_by_wechat`,`pay_by_zhi`,`qq`,`wechat`,`wechat_code`) values (1,'2553378438@qq.com','http://47.113.92.137:8888/upload/io/img/2020/4/6/1586161248887.png','http://47.113.92.137:8888/upload/io/img/2020/4/6/1586161235821.jpg','2553378438','weixin_ilff_dh','http://47.113.92.137:8888/upload/io/img/2020/4/6/1586161319792.jpg');
+
 /*Table structure for table `t_links` */
 
 DROP TABLE IF EXISTS `t_links`;
@@ -126,6 +128,8 @@ CREATE TABLE `t_links` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `t_links` */
+
+insert  into `t_links`(`id`,`link`,`name`) values (1,'#','暂无友链,欢迎互联'),(2,'#','暂无友链,欢迎互联'),(3,'#',NULL);
 
 /*Table structure for table `t_tag` */
 
@@ -184,7 +188,7 @@ CREATE TABLE `t_user` (
 
 /*Data for the table `t_user` */
 
-insert  into `t_user`(`id`,`avatar`,`create_time`,`email`,`nickname`,`password`,`type`,`update_time`,`username`) values (1,NULL,'2020-05-19 15:30:23',NULL,NULL,'123456',NULL,'2020-05-19 15:30:41','admin');
+insert  into `t_user`(`id`,`avatar`,`create_time`,`email`,`nickname`,`password`,`type`,`update_time`,`username`) values (1,'http://47.113.92.137:8888/upload/io/img/2020/4/11/1586535025470.jpg','2020-05-19 15:30:23','2553378438@qq.com','小王','123456',1,'2020-05-19 15:30:41','admin');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
