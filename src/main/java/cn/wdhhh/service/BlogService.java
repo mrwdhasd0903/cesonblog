@@ -21,7 +21,7 @@ public interface BlogService {
 
     Page<Blog> listBlog(Pageable pageable);
 
-    Page<Blog> listBlog(Long tagId,Pageable pageable);
+    Page<Blog> listBlogByJoin(Long tagId,Pageable pageable,String join);
 
     Page<Blog> listBlog(String query,Pageable pageable);
 

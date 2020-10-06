@@ -43,7 +43,7 @@ public class BlogServiceImpl implements BlogService {
 
     @Transactional
     @Override
-    public Blog getAndConvert(Long id,Boolean isAdd) {
+    public Blog getAndConvert(Long id, Boolean isAdd) {
         Blog blog = blogRepository.findById(id).get();
         if (blog == null) {
             throw new NotFoundException("该博客不存在");
@@ -52,7 +52,7 @@ public class BlogServiceImpl implements BlogService {
         BeanUtils.copyProperties(blog, b);
         String content = b.getContent();
         b.setContent(MarkdownUtils.markdownToHtmlExtensions(content));
-        if(isAdd){
+        if (isAdd) {
             blogRepository.updateViews(id);
         }
         return b;
@@ -98,12 +98,14 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
-    public Page<Blog> listBlog(Long tagId, Pageable pageable) {
+    public Page<Blog> listBlogByJoin(Long id, Pageable pageable,String joinStr) {
         return blogRepository.findAll(new Specification<Blog>() {
             @Override
             public Predicate toPredicate(Root<Blog> root, CriteriaQuery<?> cq, CriteriaBuilder cb) {
-                Join join = root.join("tags");
-                return cb.equal(join.get("id"), tagId);
+                Join join = root.join(joinStr);
+                Predicate p1 = cb.equal(join.get("id"), id);
+                Predicate p2 = cb.equal(root.get("published"), true);
+                return cb.and(p1, p2);
             }
         }, pageable);
     }

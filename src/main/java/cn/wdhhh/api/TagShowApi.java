@@ -30,6 +30,6 @@ public class TagShowApi {
             List<Tag> tags = tagService.listTagTop(1);
             id = tags.get(0).getId();
         }
-        return DeredundantUtils.deredundant(blogService.listBlog(id, pageable));
+        return DeredundantUtils.deredundant(blogService.listBlogByJoin(id, pageable,"tags"));
     }
 }

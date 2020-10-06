@@ -38,8 +38,6 @@ public class TypeShowApi {
             List<Type> types = typeService.listTypeTop(1);
             id = types.get(0).getId();
         }
-        BlogQuery blogQuery = new BlogQuery();
-        blogQuery.setTypeId(id);
-        return DeredundantUtils.deredundant(blogService.listBlog(pageable, blogQuery));
+        return DeredundantUtils.deredundant(blogService.listBlogByJoin(id,pageable, "type"));
     }
 }

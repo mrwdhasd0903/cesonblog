@@ -25,6 +25,7 @@ public class TypeServiceImpl implements TypeService {
 
     /**
      * 新增分类
+     *
      * @param type
      * @return
      */
@@ -36,6 +37,7 @@ public class TypeServiceImpl implements TypeService {
 
     /**
      * 查询一个分类
+     *
      * @param id
      * @return
      */
@@ -47,6 +49,7 @@ public class TypeServiceImpl implements TypeService {
 
     /**
      * 查询一个分类byName
+     *
      * @param name
      * @return
      */
@@ -57,6 +60,7 @@ public class TypeServiceImpl implements TypeService {
 
     /**
      * 分页查询
+     *
      * @param pageable
      * @return
      */
@@ -76,12 +80,13 @@ public class TypeServiceImpl implements TypeService {
     @Override
     public List<Type> listTypeTop(Integer size) {
         Sort sort = Sort.by(Sort.Order.desc("blogs.size"));
-        Pageable pageable = PageRequest.of(0,size,sort);
+        Pageable pageable = PageRequest.of(0, size, sort);
         return typeRepository.findTop(pageable);
     }
 
     /**
      * 修改分类
+     *
      * @param id
      * @param type
      * @return
@@ -93,13 +98,14 @@ public class TypeServiceImpl implements TypeService {
         if (t == null) {
             throw new NotFoundException("不存在该类型");
         }
-        BeanUtils.copyProperties(type,t);
+        BeanUtils.copyProperties(type, t);
         return typeRepository.save(t);
     }
 
 
     /**
      * 删除分类
+     *
      * @param id
      */
     @Transactional
